@@ -27,4 +27,8 @@ final class ToDoTableAdapter: NSObject, UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        cellDelegate?.editButtonTapped(model: models[indexPath.row])
+    }
 }

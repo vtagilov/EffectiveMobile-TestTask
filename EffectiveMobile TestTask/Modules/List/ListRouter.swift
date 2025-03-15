@@ -2,13 +2,15 @@ import UIKit
 
 final class ListRouter: Router {
     weak var view: UIViewController?
+    var coreRouter: CoreRouter
     
-    init(view: UIViewController) {
+    init(coreRouter: CoreRouter, view: UIViewController) {
+        self.coreRouter = coreRouter
         self.view = view
     }
     
-    func openDetailsScreen(_ model: ToDoItem? = nil) {
-        
+    func openDetailsScreen(_ model: ToDoItem) {
+        coreRouter.navigateToDetailScreen(model: model)
     }
     
     func shareText(_ text: String) {

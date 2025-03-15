@@ -9,6 +9,7 @@ protocol ListPresenter: Presenter {
     func searchItems(_ text: String)
     func createNewItem()
     func editItem(_ model: ToDoItem)
+    func updateTableViewItem(_ model: ToDoItem)
 }
 
 final class ListPresenterImpl: ListPresenter {
@@ -62,8 +63,20 @@ final class ListPresenterImpl: ListPresenter {
         CoreDataManager.shared.updateItem(model)
     }
     
+    func updateTableViewItem(_ model: ToDoItem) {
+        if let index = items.firstIndex(where: { $0.id == model.id }) {
+            items[index] = model
+        }
+        tableDataSource.setModels(items)
+        view?.updateItemsCounter(items.count)
+    }
+    
     func createNewItem() {
-        router?.openDetailsScreen()
+        let newId = (items.map { $0.id }.max() ?? 0) + 1
+        let newItem = ToDoItem(id: newId, todo: "", completed: false, userId: 0)
+        CoreDataManager.shared.saveItems([newItem])
+        items.append(newItem)
+        router?.openDetailsScreen(newItem)
     }
     
     func editItem(_ model: ToDoItem) {

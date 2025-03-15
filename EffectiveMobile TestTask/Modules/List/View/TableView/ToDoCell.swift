@@ -55,6 +55,7 @@ final class ToDoCell: UITableViewCell {
     private func configureView() {
         backgroundView = nil
         backgroundColor = .clear
+        selectionStyle = .none
         completeButton.setImage(UIImage.symbol("circle", size: 20), for: .normal)
         completeButton.setImage(UIImage.symbol("checkmark.circle", size: 20), for: .selected)
         completeButton.addTarget(self, action: #selector(completeButtonTapped), for: .touchUpInside)
@@ -63,7 +64,7 @@ final class ToDoCell: UITableViewCell {
         descriptionLabel.numberOfLines = 2
         dateLabel.font = .systemFont(ofSize: 12)
         dateLabel.textColor = .gray
-        dateLabel.text = Date().formatted()
+        dateLabel.text = Date().formattedDate()
         for subview in [completeButton, titleLabel, descriptionLabel, dateLabel] {
             contentView.addSubview(subview)
             subview.translatesAutoresizingMaskIntoConstraints = false

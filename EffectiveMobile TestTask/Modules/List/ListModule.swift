@@ -6,7 +6,7 @@ final class ListModule: ModuleFactory {
         let view = ListViewController()
         let interactor = ListInteractor(networkManager: context.networkManager)
         let presenter = ListPresenterImpl(view: view, interactor: interactor)
-        let router = ListRouter(view: view)
+        let router = ListRouter(coreRouter: context.coreRouter, view: view)
 
         view.presenter = presenter
         interactor.presenter = presenter
@@ -18,4 +18,5 @@ final class ListModule: ModuleFactory {
 
 struct ListModuleContext: Context {
     let networkManager: NetworkManager
+    let coreRouter: CoreRouter
 }

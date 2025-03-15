@@ -1,6 +1,7 @@
 import UIKit
 
 protocol ListView: BaseView {
+    var presenter: ListPresenter! { get }
     var tableViewDataSource: ToDoTableAdapter? { get set }
     func updateItemsCounter(_ count: Int)
     func showError(_ type: ListViewErrorType)
