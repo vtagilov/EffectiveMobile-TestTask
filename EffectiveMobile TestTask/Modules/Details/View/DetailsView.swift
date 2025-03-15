@@ -34,6 +34,7 @@ final class DetailsViewController: UIViewController, DetailsView {
         titleLabel.text = (titleLabel.text?.isEmpty ?? true) ? "Задачи" : titleLabel.text
         titleLabel.font = .boldSystemFont(ofSize: 34)
         titleLabel.textAlignment = .left
+        titleLabel.textColor = .white
         
         dateLabel.font = .systemFont(ofSize: 12)
         dateLabel.textColor = .gray
@@ -41,6 +42,8 @@ final class DetailsViewController: UIViewController, DetailsView {
         
         textView.font = .systemFont(ofSize: 16)
         textView.delegate = self
+        textView.backgroundColor = .primaryBackground
+        textView.textColor = .white
         
         for subview in [titleLabel, dateLabel, textView] {
             subview.translatesAutoresizingMaskIntoConstraints = false

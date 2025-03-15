@@ -38,11 +38,12 @@ final class SearchBar: UIView {
     }
     
     private func configureView() {
+        backgroundColor = .primaryBackground
         searchBar.searchTextField.enablesReturnKeyAutomatically = false
         searchBar.delegate = self
         searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
         searchBar.placeholder = "Search"
-        searchBar.tintColor = .gray
+        searchBar.searchTextField.textColor = .white
         
         cancelButton.setTitle("Отменить", for: .normal)
         cancelButton.titleLabel?.font = .systemFont(ofSize: 14)
@@ -55,7 +56,6 @@ final class SearchBar: UIView {
         if let image = UIImage(named: "microphone.fill") {
             microphoneButton.setImage(image, for: .selected)
         }
-        microphoneButton.imageView?.tintColor = .gray
         microphoneButton.addTarget(self, action: #selector(microphoneButtonTapped), for: .touchUpInside)
         
         for subview in [searchBar, microphoneButton, cancelButton] {

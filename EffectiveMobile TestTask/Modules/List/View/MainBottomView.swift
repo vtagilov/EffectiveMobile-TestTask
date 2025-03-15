@@ -39,6 +39,7 @@ final class MainBottomView: UIView {
         
         itemsCountLabel.text = "0 задач"
         itemsCountLabel.font = .systemFont(ofSize: 13)
+        itemsCountLabel.textColor = .white
         
         newItemButton.addTarget(self, action: #selector(newItemButtonAction), for: .touchUpInside)
         newItemButton.addTarget(self, action: #selector(buttonTapped), for: .touchDown)

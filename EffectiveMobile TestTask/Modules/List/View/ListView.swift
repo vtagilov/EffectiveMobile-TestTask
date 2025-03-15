@@ -56,6 +56,7 @@ final class ListViewController: UIViewController, ListView {
         titleLabel.text = "Задачи"
         titleLabel.font = .boldSystemFont(ofSize: 34)
         titleLabel.textAlignment = .left
+        titleLabel.textColor = .white
         
         searchBar.searchDelegate = self
         bottomView.delegate = self
@@ -64,6 +65,7 @@ final class ListViewController: UIViewController, ListView {
         tableView.contentInsetAdjustmentBehavior = .never
         tableView.tableHeaderView = nil
         tableView.showsVerticalScrollIndicator = false
+        tableView.backgroundColor = .primaryBackground
         
         for subview in [titleLabel, searchBar, tableView, bottomView] {
             subview.translatesAutoresizingMaskIntoConstraints = false
